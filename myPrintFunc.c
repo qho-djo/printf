@@ -78,7 +78,7 @@ int prints_perc(int *count)
  * Return: number of values
  */
 
-void prints_int(va_list args, int *count)
+int prints_int(va_list args, int *count)
 {
 	int n = va_arg(args, int);
 	int i = 1;
@@ -98,6 +98,7 @@ void prints_int(va_list args, int *count)
 		n %= i;
 		i /= 10;
 	}
+	return (0);
 }
 
 /**

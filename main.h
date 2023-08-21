@@ -14,6 +14,6 @@ int _putchar(char c);
 int print_number(long num, int *count);
 int prints_str(va_list args, int *count);
 int prints_char(va_list args, int *count);
-void prints_int(va_list args, int *count);
+int prints_int(va_list args, int *count);
 
 #endif
