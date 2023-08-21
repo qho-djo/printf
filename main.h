@@ -1,17 +1,19 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdlib.h>
+#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <string.h>
+#include <ctype.h>
+#include <limits.h>
 
-int _putchar(char c);
+int prints_perc(int *count);
 int _printf(const char *format, ...);
-int _puts(char *c);
-void formatSpecifier(int *count, char *format, va_list args);
-int _print_int(int num);
-int print_char(char c);
-int print_string(char *str);
+int _putchar(char c);
+int print_number(long num, int *count);
+int prints_str(va_list args, int *count);
+int prints_char(va_list args, int *count);
+int prints_int(va_list args, int *count);
+
 #endif

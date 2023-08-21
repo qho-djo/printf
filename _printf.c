@@ -1,52 +1,48 @@
 #include "main.h"
 
 /**
-  * _printf - a function
-  * @format: parameter string
-  *
-  * Return: count
-  */
-
-
+ * _printf - Custom printf function.
+ * @format: Format string containing directives.
+ *
+ * Return: The number of characters printed (excluding null byte).
+ */
 int _printf(const char *format, ...)
 {
-	int count = 0;
 	va_list args;
-
-	if (format == NULL)
-		return (-1);
+	int count = 0, a = 0;
 
 	va_start(args, format);
-	while (*format)
+	if (!format)
+		return (-1);
+	while (format[a])
 	{
-		if (*format == '%')
+		if (format[a] != '%')
 		{
-			format++;
-			if (*format == '\0')
-				break;
-
-			if (*format == 'c')
+			_putchar(format[a]);
+			count++;
+		}
+		else if (format[a] == '%')
+		{
+			a++;
+			if (format[a] == ' ' || format[a] == '\0')
+				return (-1);
+			if (format[a] == 's')
+				prints_str(args, &count);
+			else if (format[a] == 'c')
+				prints_char(args, &count);
+			else if (format[a] == 'd' || format[a] == 'i')
+				prints_int(args, &count);
+			else if (format[a] == '%')
+				prints_perc(&count);
+			else
 			{
-				int c = va_arg(args, int);
-
-				count += print_char(c);
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-
-				count += print_string(str);
-			}
-			else if (*format == '%')
-			{
-				count += print_char('%');
+				_putchar(format[a - 1]);
+				count++;
+				_putchar(format[a]);
+				count++;
 			}
 		}
-		else
-		{
-			count += print_char(*format);
-		}
-		format++;
+		a++;
 	}
 	va_end(args);
 	return (count);
