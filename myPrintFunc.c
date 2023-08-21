@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <string.h>
 /**
  * prints_str - a function that prints a string
  *
@@ -81,23 +81,11 @@ int prints_perc(int *count)
 int prints_int(va_list args, int *count)
 {
 	int n = va_arg(args, int);
-	int i = 1;
+	char buffer[20];
 
-	if (n < 0)
-	{
-		_putchar('-');
-		*count += 1;
-		n = -n;
-	}
-	while (n / i > 9)
-		i *= 10;
-	while (i > 0)
-	{
-		_putchar(n / i + '0');
-		*count += 1;
-		n %= i;
-		i /= 10;
-	}
+	snprintf(buffer, sizeof(buffer), "%d", n);
+	_puts(buffer);
+	*count += strlen(buffer);
 	return (0);
 }
 
