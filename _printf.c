@@ -32,6 +32,8 @@ int _printf(const char *format, ...)
 				prints_char(args, &count);
 			else if (format[a] == 'd' || format[a] == 'i')
 				prints_int(args, &count);
+			else if (format[a] == 'b')
+				prints_binary(args, &count);
 			else if (format[a] == '%')
 				prints_perc(&count);
 			else
