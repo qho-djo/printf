@@ -78,17 +78,26 @@ int prints_perc(int *count)
  * Return: number of values
  */
 
-int prints_int(va_list args, int *count)
+void prints_int(va_list args, int *count)
 {
-	int num = va_arg(args, int);
+	int n = va_arg(args, int);
+	int i = 1;
 
-	if (num <= INT_MAX && num >= INT_MIN)
+	if (n < 0)
 	{
-		print_number(num, count);
+		_putchar('-');
+		*count += 1;
+		n = -n;
 	}
-	else
-		return (-1);
-	return (0);
+	while (n / i > 9)
+		i *= 10;
+	while (i > 0)
+	{
+		_putchar(n / i + '0');
+		*count += 1;
+		n %= i;
+		i /= 10;
+	}
 }
 
 /**
