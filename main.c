@@ -48,11 +48,12 @@ int main(void)
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	/**
-	 * _printf("Unknown:[%r]\n");
-	 * This line is problematic because '%r' is not a valid specifier.
-	 * printf("Unknown:[%r]\n");
-	 * This line is problematic for the same reason.
+	
+	 _printf("Unknown:[%r]\n");
+	/* This line is problematic because '%r' is not a valid specifier.
+	 */
+	 printf("Unknown:[%r]\n");
+	 /* This line is problematic for the same reason.
 	 */
 
 	return (0);
