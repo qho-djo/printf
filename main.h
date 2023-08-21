@@ -18,10 +18,12 @@ void formatSpecifier(int *count, char *format, va_list args);
  * @c - a format specifer checker
  * @fpointer: Pointer to a function
  */
-typedef struct funcStruct
-{
-	const char c;
-	int (*fpointer)(va_list, char *);
-} funcStruct;
 
+/**
+  *typedef struct funcStruct
+  *{
+  *	const char c;
+  *	int (*fpointer)(va_list, char *);
+  *} funcStruct;
+  */
 #endif

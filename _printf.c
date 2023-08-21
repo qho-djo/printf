@@ -1,6 +1,16 @@
 #include "main.h"
 
 /**
+ * _putchar - Writes a character to stdout.
+ * @c: The character to write.
+ * Return: 1 on success, -1 on error.
+ */
+int _putchar(char c)
+{
+    return (write(1, &c, 1));
+}
+
+/**
  * _printf - a function that produces output according to a format.
  * @format: a character string.
  *
@@ -9,38 +19,49 @@
 
 int _printf(const char *format, ...)
 {
-	int a, count = 0, s_count;
+    int count = 0, i;
+    va_list args;
 
-	va_list args;
+    va_start(args, format);
 
-	if (format == NULL)
-		return (-1);
+    for (i = 0; format && format[i] != '\0'; i++)
+    {
+        if (format[i] != '%')
+        {
+            _putchar(format[i]);
+            count++;
+        }
+        else if (format[i + 1] == '%')
+        {
+            _putchar('%');
+            count++;
+            i++;
+        }
+        else if (format[i + 1] == 'c')
+        {
+            char c = va_arg(args, int);
+            _putchar(c);
+            count++;
+            i++;
+        }
+        else if (format[i + 1] == 's')
+        {
+            const char *str = va_arg(args, const char *);
+            while (*str)
+            {
+                _putchar(*str);
+                str++;
+                count++;
+            }
+            i++;
+        }
+        else
+        {
+            _putchar('%');
+            count++;
+        }
+    }
 
-	va_start(args, format);
-
-	for (a = 0; format && format[a] != '\0'; a++)
-	{
-		if (format[a] != '%')
-		{
-			_putchar(format[a]);
-		}
-		else if (format[a + 1] == 'c')
-		{
-			_putchar(va_arg(args, int));
-			a++;
-		}
-		else if (format[a + 1] == 's')
-		{
-			s_count = _puts(va_arg(args, char *));
-			a++;
-			count = count + (s_count - 1);
-		}
-		else if (format[a + 1] == '%')
-		{
-			_putchar('%');
-		}
-		count++;
-	}
-	va_end(args);
-	return (count);
+    va_end(args);
+    return (count);
 }
