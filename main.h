@@ -11,6 +11,7 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int _puts(char *c);
 void formatSpecifier(int *count, char *format, va_list args);
+int _print_int(int num);
 
 
 /**
