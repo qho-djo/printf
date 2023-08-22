@@ -11,15 +11,22 @@
 void prints_binary(va_list args, int *count)
 {
 	unsigned int n = va_arg(args, unsigned int);
-	int i = 1;
+	int i = 1, j, binary[32];
 
-	while ((n / i) > 1)
-		i *= 2;
-	while (i > 0)
+	if (n == 0)
 	{
-		_putchar((n / i) + '0');
-		*count += 1;
-		n %= i;
-		i /= 2;
+		_putchar('0');
+		(*count)++;
+	}
+	while (n > 0)
+	{
+		binary[i] = n % 2;
+		n /= 2;
+		i++;
+	}
+	for (j = i - 1; j > 0; j--)
+	{
+		_putchar(binary[j] + '0');
+		(*count)++;
 	}
 }
