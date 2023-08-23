@@ -121,6 +121,7 @@ int prints_S(va_list args, int *count)
 			_putchar('\\');
 			_putchar('x');
 			prints_single_x(str[i], count);
+			*count += 4;
 		}
 		else
 		{
