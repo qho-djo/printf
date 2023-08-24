@@ -27,4 +27,7 @@ int prints_x(va_list args, int *count);
 int prints_o(va_list args, int *count);
 int prints_u(va_list args, int *count);
 void prints_single_x(int n, int *count);
+int prints_S_custom(va_list args, int *count);
+void prints_single_x(int n, int *count);
+
 #endif

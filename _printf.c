@@ -26,7 +26,12 @@ int _printf(const char *format, ...)
 			a++;
 			if (format[a] == ' ' || format[a] == '\0')
 				return (-1);
-			if (other_specifiers(format[a], args, &count) == -1)
+			if (format[a] == 'S')
+			{
+				if (prints_S_custom(args, count) == -1)
+					return (-1);
+			}
+			else if (other_specifiers(format[a], args, &count) == -1)
 				return (-1);
 		}
 		a++;
@@ -79,3 +84,28 @@ int other_specifiers(char specifiers, va_list args, int *count)
 	}
 }
 
+int prints_S_custom(va_list args, int *count)
+{
+	char *str = va_arg(args, char *);
+	int i = 0;
+
+	if (str == NULL)
+		return (-1);
+
+	while (str[i] != '\0')
+	{
+		if ((str[i] < 32 && str[i] >= 0) || str[i] >= 127)
+		{
+			_puts("\\x");
+			prints_single_x(str[i], count);
+			*count += 4;
+		}
+		else
+		{
+			_putchar(str[i]);
+			(*count)++;
+		}
+		i++;
+	}
+	return (0);
+}

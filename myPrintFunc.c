@@ -9,6 +9,16 @@
  * Return: a value
  */
 
+
+void prints_single_x(int n, int *count)
+{
+    char hex_num[] = "0123456789ABCDEF";
+
+    _putchar(hex_num[(n >> 4) & 0xF]);
+    _putchar(hex_num[n & 0xF]);
+    (*count) += 2;
+}
+
 int prints_str(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);
