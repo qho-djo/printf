@@ -9,7 +9,6 @@
  * Return: a value
  */
 
-
 int prints_str(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);

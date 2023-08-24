@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			a++;
 			if (format[a] == ' ' || format[a] == '\0')
 				return (-1);
-		}
+			if (other_specifiers(format[a], args, &count) == -1)
 				return (-1);
 		}
 		a++;
