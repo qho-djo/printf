@@ -83,7 +83,7 @@ int prints_int(va_list args, int *count)
 	int n = va_arg(args, int);
 	char buffer[20];
 
-	snprintf(buffer, sizeof(buffer), "%+ d", n);
+	snprintf(buffer, sizeof(buffer), "%d", n);
 	_puts(buffer);
 	*count += strlen(buffer);
 	return (0);
