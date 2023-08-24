@@ -29,6 +29,7 @@ int prints_o(va_list args, int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
 
+	_putchar('0');
 	return (prints_base(num, 8, count));
 }
 
@@ -45,6 +46,7 @@ int prints_x(va_list args, int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
 
+	_puts("0x");
 	return (prints_base(num, 16, count));
 }
 
@@ -61,5 +63,6 @@ int prints_X(va_list args, int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
 
+	_puts("0X");
 	return (prints_uppercaseHex(num, 16, count));
 }
