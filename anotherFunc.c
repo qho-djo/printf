@@ -120,9 +120,8 @@ int prints_S(va_list args, int *count)
 		{
 			_putchar('\\');
 			_putchar('x');
-			if (str[i] < 16)
-				_putchar('0');
 			prints_single_x(str[i], count);
+			*count += 4;
 		}
 		else
 		{
